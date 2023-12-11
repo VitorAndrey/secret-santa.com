@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Amigo Secreto:
 
-## Getting Started
+### 1- Cadastro de Grupo de Amigo Secreto Público:
 
-First, run the development server:
+- Permitir que os usuários criem e gerenciem grupos de amigo secreto.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 2- Funcionalidade de Criação de Grupos:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- A capacidade de criação de grupos deve ser exclusiva para o criador do grupo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3 - Inscrição de Usuários em Grupos:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Permitir que os usuários se inscrevam nos grupos disponíveis.
 
-## Learn More
+### 4 - Aprovação de Participantes pelo Criador:
 
-To learn more about Next.js, take a look at the following resources:
+- O criador do grupo deve ter a opção de aceitar ou rejeitar as inscrições dos usuários.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5 - Sorteio dos Amigos Secretos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Implementar um sistema de sorteio para atribuir amigos secretos a cada participante.
 
-## Deploy on Vercel
+### 6- Notificação por Email do Amigo Secreto Atribuído:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Enviar notificação por e-mail informando a cada participante o nome do amigo secreto que foi atribuído a ele.
