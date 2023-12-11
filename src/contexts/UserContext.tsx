@@ -12,10 +12,7 @@ type UserContextType = {
 export const UserContext = createContext({} as UserContextType);
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>({
-    email: "jhon@jhon",
-    name: "jhon",
-  });
+  const [user, setUser] = useState<User | null>(null);
 
   function handleUpdateUser(user: User | null) {
     if (!user) return setUser(null);
