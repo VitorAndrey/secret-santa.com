@@ -1,25 +1,15 @@
 # Amigo Secreto:
 
-### 1- Cadastro de Grupo de Amigo Secreto Público:
+### Requisitos Funcionais
 
-- Permitir que os usuários criem e gerenciem grupos de amigo secreto.
+-[] Permitir que os usuários criem e gerenciem grupos de amigo secreto.
 
-### 2- Funcionalidade de Criação de Grupos:
+-[] A capacidade de criação de grupos deve ser exclusiva para o criador do grupo.
 
-- A capacidade de criação de grupos deve ser exclusiva para o criador do grupo.
+-[] Permitir que os usuários se inscrevam nos grupos disponíveis.
 
-### 3 - Inscrição de Usuários em Grupos:
+-[] O criador do grupo deve ter a opção de aceitar ou rejeitar as inscrições dos usuários.
 
-- Permitir que os usuários se inscrevam nos grupos disponíveis.
+-[] Implementar um sistema de sorteio para atribuir amigos secretos a cada participante.
 
-### 4 - Aprovação de Participantes pelo Criador:
-
-- O criador do grupo deve ter a opção de aceitar ou rejeitar as inscrições dos usuários.
-
-### 5 - Sorteio dos Amigos Secretos:
-
-- Implementar um sistema de sorteio para atribuir amigos secretos a cada participante.
-
-### 6- Notificação por Email do Amigo Secreto Atribuído:
-
-- Enviar notificação por e-mail informando a cada participante o nome do amigo secreto que foi atribuído a ele.
+-[] Enviar notificação por e-mail informando a cada participante o nome do amigo secreto que foi atribuído a ele.
