@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="bg-theme-bg h-[calc(100vh-64px)]">
       <div className="wrapper flex flex-col items-center justify-center h-[80vh]">
-        <div className="max-w-md flex items-center justify-center">
+        <div className="max-w-lg flex items-center justify-center">
           <Image
             sizes="100vw"
             priority
