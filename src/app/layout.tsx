@@ -21,10 +21,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} sm:hidden`}>
+      <body className={inter.className}>
         <UserContextProvider>
-          <Header />
-          {children}
+          <div className="sm:hidden">
+            <Header />
+            {children}
+          </div>
+
+          <div className="text-center hidden w-full h-screen sm:flex items-center justify-center">
+            <h2>
+              Sentimos muito!
+              <br />
+              Este site só está disponível em dispositivos móveis no momento.
+              <br />
+              Tente acessar em um smartphone.
+            </h2>
+          </div>
         </UserContextProvider>
       </body>
     </html>
