@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import {
   Bell,
@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -27,9 +28,16 @@ import { useContext } from "react";
 import { UserContext } from "@/contexts/UserContext";
 
 export function DrawerMenu() {
-  const { isUserLogged } = useContext(UserContext);
+  const { isUserLogged, handleUpdateUser } = useContext(UserContext);
+  const navigation = useRouter();
 
   const pathname = usePathname();
+
+  function handleSimulateLogOut() {
+    handleUpdateUser(null);
+
+    navigation.push("/");
+  }
 
   return (
     <Sheet>
@@ -48,57 +56,71 @@ export function DrawerMenu() {
                 <h3 className="truncate">Vitor Andrey</h3>
               </div>
 
-              <Button size="icon" variant="ghost">
-                {" "}
-                <LogOutIcon className="w-5 h-5" />
-              </Button>
+              <SheetClose asChild>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={handleSimulateLogOut}
+                >
+                  <LogOutIcon className="w-5 h-5" />
+                </Button>
+              </SheetClose>
             </div>
 
             <nav className="space-y-8">
               <div className="flex flex-col gap-1">
                 <h3 className="font-semibold px-4 mb-2">Apresentação</h3>
 
-                <Link href="/">
-                  <Button
-                    className="w-full justify-start"
-                    variant={pathname === "/" ? "secondary" : "ghost"}
-                  >
-                    <PartyPopperIcon className="w-4 mr-2" /> Boas vindas
-                  </Button>
-                </Link>
+                <SheetClose asChild>
+                  <Link href="/welcome">
+                    <Button
+                      className="w-full justify-start"
+                      variant={pathname === "/welcome" ? "secondary" : "ghost"}
+                    >
+                      <PartyPopperIcon className="w-4 mr-2" /> Boas vindas
+                    </Button>
+                  </Link>
+                </SheetClose>
               </div>
 
               <div className="flex flex-col gap-1">
                 <h3 className="font-semibold px-4 mb-2">Descubra</h3>
+                <SheetClose asChild>
+                  <Link href="/newgroup">
+                    <Button
+                      className="w-full justify-start"
+                      variant={pathname === "/newgroup" ? "secondary" : "ghost"}
+                    >
+                      <Users2 className="w-4 mr-2" /> Criar grupos
+                    </Button>
+                  </Link>
+                </SheetClose>
 
-                <Link href="/newgroup">
-                  <Button
-                    className="w-full justify-start"
-                    variant={pathname === "/newgroup" ? "secondary" : "ghost"}
-                  >
-                    <Users2 className="w-4 mr-2" /> Criar grupos
-                  </Button>
-                </Link>
+                <SheetClose asChild>
+                  <Link href="/joingroup">
+                    <Button
+                      className="w-full justify-start"
+                      variant={
+                        pathname === "/joingroup" ? "secondary" : "ghost"
+                      }
+                    >
+                      <FolderOpenDot className="w-4 mr-2" /> Entrar em grupos
+                    </Button>
+                  </Link>
+                </SheetClose>
 
-                <Link href="/joingroup">
-                  <Button
-                    className="w-full justify-start"
-                    variant={pathname === "/joingroup" ? "secondary" : "ghost"}
-                  >
-                    <FolderOpenDot className="w-4 mr-2" /> Entrar em grupos
-                  </Button>
-                </Link>
-
-                <Link href="/notifications">
-                  <Button
-                    className="w-full justify-start"
-                    variant={
-                      pathname === "/notifications" ? "secondary" : "ghost"
-                    }
-                  >
-                    <Bell className="w-4 mr-2" /> Notificações
-                  </Button>
-                </Link>
+                <SheetClose asChild>
+                  <Link href="/notifications">
+                    <Button
+                      className="w-full justify-start"
+                      variant={
+                        pathname === "/notifications" ? "secondary" : "ghost"
+                      }
+                    >
+                      <Bell className="w-4 mr-2" /> Notificações
+                    </Button>
+                  </Link>
+                </SheetClose>
               </div>
             </nav>
           </ScrollArea>
@@ -108,43 +130,51 @@ export function DrawerMenu() {
               Se registre na plataforma para começar seus amigos secretos!
             </p>
 
-            <Link href="/register">
-              <Button variant="default">Registrar</Button>
-            </Link>
+            <SheetClose asChild>
+              <Link href="/register">
+                <Button variant="default">Registrar</Button>
+              </Link>
+            </SheetClose>
 
             <p className="text-sm">
               Já possui uma conta?
-              <Link href="/login">
-                <Button variant="link" className="p-2">
-                  Entrar!
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href="/login">
+                  <Button variant="link" className="p-2">
+                    Entrar!
+                  </Button>
+                </Link>
+              </SheetClose>
             </p>
           </div>
         )}
 
         <SheetFooter>
-          <Link
-            href="https://github.com/VitorAndrey/network-news-site"
-            target="_blank"
-          >
-            <Button
-              variant="outline"
-              className="flex items-center gap-1 mx-auto mb-6"
+          <SheetClose asChild>
+            <Link
+              href="https://github.com/VitorAndrey/secret-santa.com"
+              target="_blank"
             >
-              <Github className="w-4" />
-              GitHub
-            </Button>
-          </Link>
+              <Button
+                variant="outline"
+                className="flex items-center gap-1 mx-auto mb-6"
+              >
+                <Github className="w-4" />
+                GitHub
+              </Button>
+            </Link>
+          </SheetClose>
 
           <h3 className="text-xs text-muted-foreground text-center mb-4">
             Feito com ❤️ por{" "}
-            <Link
-              href="mailto:vitor.andreylopes@gmail.com"
-              className="underline"
-            >
-              Vitor Andrey
-            </Link>
+            <SheetClose asChild>
+              <Link
+                href="mailto:vitor.andreylopes@gmail.com"
+                className="underline"
+              >
+                Vitor Andrey
+              </Link>
+            </SheetClose>
           </h3>
         </SheetFooter>
       </SheetContent>

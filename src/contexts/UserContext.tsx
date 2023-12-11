@@ -1,3 +1,5 @@
+"use client";
+
 import { User } from "@/models";
 import { ReactNode, createContext, useState } from "react";
 
@@ -10,7 +12,10 @@ type UserContextType = {
 export const UserContext = createContext({} as UserContextType);
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>({
+    email: "jhon@jhon",
+    name: "jhon",
+  });
 
   function handleUpdateUser(user: User | null) {
     if (!user) return setUser(null);
