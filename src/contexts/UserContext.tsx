@@ -1,7 +1,8 @@
 "use client";
 
+import { createContext, ReactNode, useState } from "react";
+
 import { User } from "@/models";
-import { ReactNode, createContext, useState } from "react";
 
 type UserContextType = {
   user: User | null;

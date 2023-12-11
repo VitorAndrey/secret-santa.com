@@ -1,3 +1,62 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off",
+    "react/react-in-jsx-scope": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Imports do React e React Native em primeiro.
+          [
+            "^react",
+            "^react-native"
+          ],
+          [
+            "^\\u0000$"
+          ],
+          // Imports de libs externas.
+          [
+            "^@?\\w"
+          ],
+          [
+            "^\\u0000$"
+          ],
+          // Imports das pastas do projeto.
+          [
+            "^@screens",
+            "^@routes",
+            "^@assets",
+            "^@models",
+            "^@contexts",
+            "^@services"
+          ],
+          [
+            "^\\u0000$"
+          ],
+          // Imports de icones da lib lucide-react-native.
+          [
+            "^lucide-react-native"
+          ],
+          [
+            "^\\u0000$"
+          ],
+          // Imports da pasta @theme.
+          [
+            "^@theme"
+          ],
+          [
+            "^\\u0000$"
+          ],
+          // Imports dos componentes de @components.
+          [
+            "^@components"
+          ]
+        ]
+      }
+    ]
+  }
 }

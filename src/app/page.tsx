@@ -1,8 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import SecretSanta from "../../public/secret-santa.png";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function Home() {
   return (

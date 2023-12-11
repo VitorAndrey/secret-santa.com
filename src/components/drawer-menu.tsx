@@ -1,18 +1,21 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useContext } from "react";
 
 import {
+  BadgePlusIcon,
   Bell,
-  FolderOpenDot,
   Github,
   LogOutIcon,
   Menu,
   PartyPopperIcon,
-  Users2,
+  UserPlus2Icon,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
+import { Avatar } from "./ui/avatar";
+import { ScrollArea } from "./ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -22,9 +25,6 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ScrollArea } from "./ui/scroll-area";
-import { Avatar } from "./ui/avatar";
-import { useContext } from "react";
 import { UserContext } from "@/contexts/UserContext";
 
 export function DrawerMenu() {
@@ -91,7 +91,7 @@ export function DrawerMenu() {
                       className="w-full justify-start"
                       variant={pathname === "/newgroup" ? "secondary" : "ghost"}
                     >
-                      <Users2 className="w-4 mr-2" /> Criar grupos
+                      <BadgePlusIcon className="w-4 mr-2" /> Criar grupos
                     </Button>
                   </Link>
                 </SheetClose>
@@ -104,7 +104,7 @@ export function DrawerMenu() {
                         pathname === "/joingroup" ? "secondary" : "ghost"
                       }
                     >
-                      <FolderOpenDot className="w-4 mr-2" /> Entrar em grupos
+                      <UserPlus2Icon className="w-4 mr-2" /> Entrar em grupos
                     </Button>
                   </Link>
                 </SheetClose>

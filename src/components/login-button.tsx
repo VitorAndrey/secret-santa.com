@@ -1,9 +1,11 @@
 "use client";
 
-import { UserContext } from "@/contexts/UserContext";
-import React, { useContext } from "react";
-import { Button } from "./ui/button";
+import { useContext } from "react";
+
 import { useRouter } from "next/navigation";
+
+import { Button } from "./ui/button";
+import { UserContext } from "@/contexts/UserContext";
 
 export default function LoginButton() {
   const { handleUpdateUser } = useContext(UserContext);
