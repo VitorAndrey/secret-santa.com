@@ -73,14 +73,21 @@ export default function MyGroups({ params }: MyGroupsType) {
           <p>Convide seus amigos para começar</p>
         </div>
       ) : (
-        <ScrollArea className="flex-1">
-          {participants.map((paticipant) => (
-            <ParticipantItem key={paticipant.id} participant={paticipant} />
-          ))}
-        </ScrollArea>
-      )}
+        <>
+          <ScrollArea className="flex-1">
+            {participants.map((paticipant) => (
+              <ParticipantItem key={paticipant.id} participant={paticipant} />
+            ))}
+          </ScrollArea>
 
-      <Button className="h-12">Sortear</Button>
+          <Button
+            disabled={participants.length < 2 || participants.length % 2 !== 0}
+            className="h-12 disabled:bg-zinc-300 disabled:text-zinc-700"
+          >
+            Sortear
+          </Button>
+        </>
+      )}
     </div>
   );
 }
