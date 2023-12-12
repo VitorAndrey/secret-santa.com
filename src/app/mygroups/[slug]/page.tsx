@@ -1,19 +1,26 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 
-import { BadgePlusIcon, BookDashedIcon } from "lucide-react";
+import { BadgePlusIcon, BookDashedIcon, UserX2Icon } from "lucide-react";
 import Link from "next/link";
 
 import { GroupItem } from "@/components/group-item";
+import ParticipantItem from "@/components/participant-item";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserContext } from "@/contexts/UserContext";
-import { Group } from "@/models";
+import { User } from "@/models";
 
-export default function NewGroup() {
-  const [myGroups, setMygroups] = useState<Group[]>([]);
+type MyGroupsType = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function MyGroups({ params }: MyGroupsType) {
+  const [participants, setParticipants] = useState<User[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const { user } = useContext(UserContext);
 
@@ -22,15 +29,14 @@ export default function NewGroup() {
 
     if (!user) return window.alert("Voçê precisa estar logado para começar.");
 
-    const newGroup: Group = {
-      id: myGroups.length.toString(),
-      authorId: user.id,
-      integrants: [],
+    const newParticipant: User = {
+      id: participants.length.toString(),
+      email: "",
       name: inputValue,
     };
 
-    setMygroups((prev) => {
-      return [newGroup, ...prev];
+    setParticipants((prev) => {
+      return [newParticipant, ...prev];
     });
 
     setInputValue("");
@@ -40,21 +46,17 @@ export default function NewGroup() {
     setInputValue(e.target.value);
   }
 
-  function handleRemoveItem(id: string) {
-    console.log(id);
-  }
-
   return (
     <div className="h-minus-header p-8 flex flex-col">
       <h3 className="self-center text-center text-xl font-semibold">
-        Meus Grupos
+        {params.slug}
       </h3>
 
       <form onSubmit={handleOnSubmit} className="flex my-8 gap-2">
         <Input
           type="text"
           className="h-12"
-          placeholder="Criar novo grupo"
+          placeholder="Adicionar participante"
           onChange={handleInputChange}
           value={inputValue}
         />
@@ -64,21 +66,21 @@ export default function NewGroup() {
         </Button>
       </form>
 
-      {myGroups.length === 0 ? (
+      {participants.length === 0 ? (
         <div className="flex-1 flex-col text-zinc-600 flex items-center justify-center">
-          <BookDashedIcon className="mb-10 text-zinc-300" size={40} />
-          <p>Nada aqui por enquanto!</p>
-          <p>Crie grupos para começar!</p>
+          <UserX2Icon className="mb-10 text-zinc-300" size={40} />
+          <p>Não há participantes no momento!</p>
+          <p>Convide seus amigos para começar</p>
         </div>
       ) : (
         <ScrollArea className="flex-1">
-          {myGroups.map((group: Group) => (
-            <Link key={group.id} href={`/mygroups/${group.name}`}>
-              <GroupItem group={group} onRemove={handleRemoveItem} />
-            </Link>
+          {participants.map((paticipant) => (
+            <ParticipantItem key={paticipant.id} participant={paticipant} />
           ))}
         </ScrollArea>
       )}
+
+      <Button className="h-12">Sortear</Button>
     </div>
   );
 }

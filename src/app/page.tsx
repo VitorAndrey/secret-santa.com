@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="bg-theme-bg h-[calc(100vh-64px)]">
+    <main className="bg-theme-bg h-minus-header">
       <div className="wrapper flex flex-col items-center justify-center h-[80vh]">
         <div className="max-w-lg flex items-center justify-center">
           <Image

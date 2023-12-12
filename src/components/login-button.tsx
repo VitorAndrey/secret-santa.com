@@ -13,6 +13,7 @@ export default function LoginButton() {
 
   function handleSimulateLogin() {
     handleUpdateUser({
+      id: "1",
       name: "jhon",
       email: "jhon@gmai.com",
     });

@@ -1,3 +1,3 @@
 export default function JoinGroup() {
-  return <div>JoinGroup</div>;
+  return <div className="h-minus-header">JoinGroup</div>;
 }

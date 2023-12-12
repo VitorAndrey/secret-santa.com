@@ -1,3 +1,3 @@
 export default function Notifications() {
-  return <div>Notiications</div>;
+  return <div className="h-minus-header">Notiications</div>;
 }
